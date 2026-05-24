@@ -1,11 +1,14 @@
 package com.pluralsight.ui;
 
-public class HomeScreen {
+import com.pluralsight.model.Potion;
+import com.pluralsight.model.SideItem;
 
-    public static void displayHome(){
+public class OrderScreen {
+
+    public static void displayOrderScreen() {
         System.out.println("""
                 ===================================================================
-                                      WELCOME TO BLOCKY BREWS
+                                      Order Menu
                 _____________________
                 |                   |
                 |                   |
@@ -21,11 +24,13 @@ public class HomeScreen {
                 """);
     }
 
-    public void promptSelection(){}
-    public void processSelection(String userChoice){}
+    public void promptSelection() {}
+    public void processSelection(String userChoice) {}
+    public Potion makePotion() { return null; }
+    public SideItem addSideItem() { return null; }
+    public void checkOut() {}
+    public void cancelOrder() {}
 
-    public static void clearConsole(){
-        System.out.print("\033[H\033[2J");
-    }
+
 }
 
