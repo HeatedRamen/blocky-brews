@@ -1,18 +1,24 @@
 package com.pluralsight.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Potion extends ShopItem{
-    private String type, effect, size;
+    private List<Catalyst> catalysts;
+    private List<Effect> effects;
+    private String size, type;
 
     Potion(){
         super();
         this.type = "";
-        this.effect = "";
+        effects = new ArrayList<>();
     }
-    Potion(String name, long price, String type, String effect){
+    Potion(String name, long price, String type, List<Effect> effects){
         super(name, price);
         this.type = type;
-        this.effect = effect;
+        this.effects = effects;
     }
+
 
     @Override
     public long getPrice() {
