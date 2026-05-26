@@ -4,13 +4,13 @@ enum Item{
     GOLDEN_CARROT(5),
     XP_BOTTLE(10);
 
-    private final int price;
+    private final long price;
 
-    Item(int price){
+    Item(long price){
         this.price = price;
     }
 
-    public int getPrice() { return price; }
+    public long getPrice() { return price; }
 }
 public class TradableItems extends ShopItem{
     private Item name;

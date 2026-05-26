@@ -5,11 +5,11 @@ enum Size{
     MEDIUM(3),
     LARGE(4);
 
-    private final int price;
+    private final long price;
 
-    Size(int price){ this.price = price; }
+    Size(long price){ this.price = price; }
 
-    public int getPrice() { return price; }
+    public long getPrice() { return price; }
 }
 
 public class PotionBase extends ShopItem{
