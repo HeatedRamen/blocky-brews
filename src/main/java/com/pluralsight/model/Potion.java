@@ -3,25 +3,36 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Potion extends ShopItem{
-    private List<Catalyst> catalysts;
-    private List<Effect> effects;
-    private String size, type;
+enum PotionSize{
+    SMALL(10),
+    MEDIUM(15),
+    LARGE(20);
 
-    Potion(){
+    private final int price;
+
+    PotionSize(int price){ this.price = price; }
+
+    public int getPrice() { return price; }
+}
+
+public class Potion extends ShopItem{
+    private List<OptionalEffect> optionalEffects;
+    private String mainEffect;
+    private PotionSize size;
+
+    public Potion(){
         super();
-        this.type = "";
-        effects = new ArrayList<>();
+        mainEffect = "";
+        optionalEffects = new ArrayList<>();
     }
-    Potion(String name, long price, String type, List<Effect> effects){
-        super(name, price);
-        this.type = type;
-        this.effects = effects;
+    public Potion(long price, PotionSize size, String mainEffect, List<OptionalEffect> optionalEffects){
+        super();
+        this.size = size;
+        this.mainEffect = mainEffect;
+        this.optionalEffects = optionalEffects;
     }
 
 
     @Override
-    public long getPrice() {
-        return 0;
-    }
+    public long getPrice() { return 0; }
 }

@@ -8,13 +8,14 @@ public class HomeScreen {
     public void run(){
         boolean isRunning = true;
 
+
         clearConsole();
-        displayHome();
         while(isRunning){
+            displayScreen();
             isRunning = processSelection(promptSelection());
         }
     }
-    public static void displayHome(){
+    public static void displayScreen(){
         System.out.println("""
                 ===================================================================
                                                WELCOME TO BLOCKY BREWS
@@ -35,7 +36,7 @@ public class HomeScreen {
 
     public String promptSelection(){
         System.out.println("Enter in your choice");
-        return input.nextLine();
+        return input.nextLine().trim();
     }
     public boolean processSelection(String userChoice){
         switch(userChoice){

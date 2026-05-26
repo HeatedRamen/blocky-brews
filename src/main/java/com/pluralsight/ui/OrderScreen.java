@@ -1,25 +1,27 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.model.Order;
 import com.pluralsight.model.Potion;
-import com.pluralsight.model.SideItem;
 
 import java.util.Scanner;
 
 public class OrderScreen {
-    static Scanner input = HomeScreen.input;
+    static Scanner input = new Scanner(System.in);
+    private Order userOrder = new Order();
 
     public void run(){
         boolean isRunning = true;
 
+        Order userOrder = new Order();
         clearConsole();
-        displayOrderScreen();
 
         while(isRunning){
+            displayScreen();
             isRunning = processSelection(promptSelection());
 
         }
     }
-    public static void displayOrderScreen() {
+    public static void displayScreen() {
         System.out.println("""
                 ===================================================================
                                                     Order Menu
@@ -40,7 +42,7 @@ public class OrderScreen {
 
     public String promptSelection() {
         System.out.println("Enter in your choice");
-        return input.nextLine();
+        return input.nextLine().trim();
     }
 
     public boolean processSelection(String userChoice){
@@ -64,9 +66,61 @@ public class OrderScreen {
                 return true;
         }
     }
-    public Potion makePotion() { return null; }
-    public SideItem addBasePotion(){ return null; }
-    public SideItem addSideItem() { return null; }
+    public void makePotion() {
+        Potion userPotion = promptPotion();
+        userOrder.addItem(userPotion);
+    }
+    public Potion promptPotion(){
+        System.out.println("""
+                ===================================================================
+                
+                                     Select which type of potion
+                                             1) Consumable
+                                             2) Throwable
+                                             3) Lingering
+                
+                ===================================================================""");
+        String potionType = promptSelection();
+
+        System.out.println("""
+                ===================================================================
+                
+                                     Select which size of potion
+                                             1) Small
+                                             2) Medium
+                                             3) Large
+                
+                ===================================================================""");
+        String potionSize = promptSelection();
+
+        System.out.println("""
+                ===================================================================
+                
+                                     Select which effect you like
+                                             1) Strength
+                                             2) Swiftness
+                                             3) Healing
+                                             4) Weakness
+                                             5) Poison
+                                             6) Harming
+                
+                ===================================================================""");
+        String potionEffect = promptSelection();
+
+        System.out.println("""
+                ===================================================================
+                
+                                               Catalyst
+                                             1) Consumable
+                                             2) Stronger potion
+                
+                ===================================================================""");
+        String potionCatalyst = promptSelection();
+
+        return null;
+    }
+    public void addBasePotion(){ }
+    public void addSideItem() { }
     public void checkOut() {}
     public void cancelOrder() {}
 

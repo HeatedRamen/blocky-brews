@@ -6,11 +6,14 @@ import java.util.List;
 public class Order {
     private List<ShopItem> playerOrder;
 
-    Order(){
+    public Order(){
         playerOrder = new ArrayList<>();
     }
 
     public void addItem(ShopItem item){
         playerOrder.add(item);
+    }
+    public void displayOrder(){
+        playerOrder.forEach(System.out::println);
     }
 }
