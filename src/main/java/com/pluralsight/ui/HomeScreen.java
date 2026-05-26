@@ -9,9 +9,9 @@ public class HomeScreen {
     public void run(){
         boolean isRunning = true;
 
+        displayHome();
         while(isRunning){
-            displayHome();
-            processSelection(promptSelection());
+            isRunning = processSelection(promptSelection());
         }
     }
     public static void displayHome(){
@@ -22,8 +22,8 @@ public class HomeScreen {
                 ┃                   ┃
                 ┃                   ┃
                 ┃   ▄▄▄▄▄▄▄▄▄▄▄▄▄   ┃
-                ┃     |_|    |_|    ┃
-                ┃                   ┃
+                ┃    |_|     |_|    ┃               1) New Order
+                ┃                   ┃               0) Exit
                 ┃       │   │       ┃
                 ┃    ═══│   │═══    ┃
                 ┃       │   │       ┃
@@ -34,10 +34,21 @@ public class HomeScreen {
     }
 
     public String promptSelection(){
+        System.out.println("Enter in your choice");
         return input.nextLine();
     }
-    public void processSelection(String userChoice){
-
+    public boolean processSelection(String userChoice){
+        switch(userChoice){
+            case "1":
+                OrderScreen orderScreen = new OrderScreen();
+                orderScreen.run();
+                return true;
+            case "0":
+                return false;
+            default:
+                System.out.println("HRGHHHHHH! (Enter a valid choice)");
+                return true;
+        }
     }
 
     public static void clearConsole(){
