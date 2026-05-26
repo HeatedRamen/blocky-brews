@@ -3,12 +3,12 @@ package com.pluralsight.ui;
 import java.util.Scanner;
 
 public class HomeScreen {
-
     static Scanner input = new Scanner(System.in);
 
     public void run(){
         boolean isRunning = true;
 
+        clearConsole();
         displayHome();
         while(isRunning){
             isRunning = processSelection(promptSelection());

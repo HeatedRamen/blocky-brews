@@ -6,6 +6,5 @@ public class App {
     static void main() {
         HomeScreen homeScreen = new HomeScreen();
         homeScreen.run();
-
     }
 }
