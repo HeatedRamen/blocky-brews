@@ -2,7 +2,6 @@ package com.pluralsight.ui;
 
 import com.pluralsight.model.*;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class OrderScreen {
@@ -13,9 +12,9 @@ public class OrderScreen {
         boolean isRunning = true;
 
         clearConsole();
-        displayScreen();
 
         while(isRunning){
+            displayScreen();
             isRunning = processMenuSelection(promptSelection());
         }
     }
@@ -59,9 +58,62 @@ public class OrderScreen {
 
     public void addBasePotion(){
 
+        clearConsole();
+        promptBasePotionName();
+        String potionName = promptSelection();
+        promptBasePotionSize();
+        processBasePotionSelection(potionName, promptSelection());
+
+    }
+
+    public void promptBasePotionName() {
+
+        System.out.println("""
+                ===================================================================
+                                            Base Potion
+                ===================================================================
+                
+                                            1) Mundane
+                                            2) Awkward
+                                            3) Thick
+                
+                ===================================================================""");
+    }
+    public void promptBasePotionSize(){
+        System.out.println("""
+                ===================================================================
+                                        Tradable Items
+                ===================================================================
+                
+                                        1) Small        (2 Emeralds)
+                                        2) Medium       (3 Emeralds)
+                                        3) Large        (4 Emeralds)
+                
+                ===================================================================""");
+    }
+
+    public void processBasePotionSelection(String potionName, String potionSize){
+
+        switch (potionName){
+            case "1" -> potionName = "Mundane";
+            case "2" -> potionName = "Awkward";
+            case "3" -> potionName = "Thick";
+            default -> {
+                System.out.println("HRGHHHHHH! (Enter a valid choice)");
+                return;
+            }
+        }
+
+        switch (potionSize){
+            case "1" -> userOrder.addItem(new PotionBase(potionName, PotionBase.Size.SMALL));
+            case "2" -> userOrder.addItem(new PotionBase(potionName, PotionBase.Size.MEDIUM));
+            case "3" -> userOrder.addItem(new PotionBase(potionName, PotionBase.Size.LARGE));
+            default -> System.out.println("HRGHHHHHH! (Enter a valid choice)");
+        }
     }
 
     public void addTrade() {
+        clearConsole();
         promptTrade();
         processTradeSelection(promptSelection());
     }
@@ -89,12 +141,14 @@ public class OrderScreen {
                 userOrder.addItem(new TradableItems(TradableItems.Item.XP_BOTTLE));
                 break;
             case "3":
+                clearConsole();
                 VillagerExpression.angry();
                 break;
             default:
                 System.out.println("HRGHHHHHH! (Enter a valid choice)");
         }
     }
+
     public void checkOut() {
         userOrder.displayOrder();
     }
@@ -118,8 +172,7 @@ public class OrderScreen {
                 ┃       │   │       ┃
                 ┗━━━━━━━│   │━━━━━━━┛
                         └───┘
-                ===================================================================
-                """);
+                ===================================================================""");
     }
 }
 
