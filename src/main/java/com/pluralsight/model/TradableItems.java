@@ -4,7 +4,9 @@ package com.pluralsight.model;
 public class TradableItems extends ShopItem{
     private Item name;
 
-    public TradableItems(Item name) { this.name = name; }
+    public TradableItems(Item name) {
+        this.name = name;
+    }
 
     public enum Item{
         GOLDEN_CARROT(5),
@@ -19,6 +21,17 @@ public class TradableItems extends ShopItem{
         public long getPrice() { return price; }
     }
 
+    public String getName(){
+        if (this.name == Item.GOLDEN_CARROT)    { return "Golden Carrot"; }
+            else if (name == Item.XP_BOTTLE)    { return "Xp Bottle"; }
+            else return "";
+    }
+
     @Override
     public long getPrice() { return name.getPrice(); }
+
+    @Override
+    public String toString() {
+        return "Name: " + getName() + "\tPrice: " + getPrice() + " Emeralds";
+    }
 }
