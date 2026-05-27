@@ -83,10 +83,10 @@ public class OrderScreen {
 
         switch (userChoice){
             case "1":
-                userOrder.addItem(new TradableItems());
+                userOrder.addItem(new TradableItems(TradableItems.Item.GOLDEN_CARROT));
                 break;
             case "2":
-                userOrder.addItem(new TradableItems());
+                userOrder.addItem(new TradableItems(TradableItems.Item.XP_BOTTLE));
                 break;
             case "3":
                 VillagerExpression.angry();

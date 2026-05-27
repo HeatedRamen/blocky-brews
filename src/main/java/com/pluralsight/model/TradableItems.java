@@ -4,7 +4,7 @@ package com.pluralsight.model;
 public class TradableItems extends ShopItem{
     private Item name;
 
-    TradableItems(Item name) { this.name = name; }
+    public TradableItems(Item name) { this.name = name; }
 
     public enum Item{
         GOLDEN_CARROT(5),
