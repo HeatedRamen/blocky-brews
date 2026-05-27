@@ -1,6 +1,7 @@
 package com.pluralsight.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Order {
@@ -14,6 +15,17 @@ public class Order {
         playerOrder.add(item);
     }
     public void displayOrder(){
+
+        // Reverse the order to show newest items on top
+        reverseOrder();
         playerOrder.forEach(System.out::println);
+
+        // Reverse order back to normal in case they add more
+        reverseOrder();
     }
+
+    public void reverseOrder(){ Collections.reverse(playerOrder); }
+    // Clear order for when they cancel
+    public void clearOrder(){ playerOrder.clear(); }
+
 }
