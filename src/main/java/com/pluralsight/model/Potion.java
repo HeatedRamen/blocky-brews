@@ -3,26 +3,6 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 import java.util.List;
 
-enum PotionSize{
-    SMALL(10, 3, 2),
-    MEDIUM(15, 6, 4),
-    LARGE(20, 9, 6);
-
-    private final long basePrice;
-    private final long initialPremium;
-    private final long additionalPremium;
-
-    PotionSize(long basePrice, long initialPremium, long additionalPremium){
-        this.basePrice = basePrice;
-        this.initialPremium = initialPremium;
-        this.additionalPremium = additionalPremium;
-    }
-
-    public long getBasePrice() { return basePrice; }
-    public long getInitialPremium () {return initialPremium; }
-    public long getAdditionalPremium () { return additionalPremium; }
-}
-
 public class Potion extends ShopItem{
     private List<OptionalEffect> optionalEffects;
     private String mainEffect;
@@ -50,10 +30,29 @@ public class Potion extends ShopItem{
     public PotionSize getSize() { return size; }
     public void setSize(PotionSize size) { this.size = size; }
 
+    public enum PotionSize{
+        SMALL(10, 3, 2),
+        MEDIUM(15, 6, 4),
+        LARGE(20, 9, 6);
+
+        private final long basePrice;
+        private final long initialPremium;
+        private final long additionalPremium;
+
+        PotionSize(long basePrice, long initialPremium, long additionalPremium){
+            this.basePrice = basePrice;
+            this.initialPremium = initialPremium;
+            this.additionalPremium = additionalPremium;
+        }
+
+        public long getBasePrice() { return basePrice; }
+        public long getInitialPremium () {return initialPremium; }
+        public long getAdditionalPremium () { return additionalPremium; }
+    }
+
     // Helper methods to calculate total potion price
     // Get a count of the premium option, if 1 charge the initial premium,
     // if 2 charge the initial + additional premium, else (0) no charge added
-
     private long getAdditionalEffectCount(){
         return optionalEffects.stream()
                 .filter(OptionalEffect::isPremium)

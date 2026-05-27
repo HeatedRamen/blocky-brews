@@ -1,21 +1,8 @@
 package com.pluralsight.model;
 
-enum Size{
-    SMALL(2),
-    MEDIUM(3),
-    LARGE(4);
-
-    private final long price;
-
-    Size(long price){ this.price = price; }
-
-    public long getPrice() { return price; }
-}
-
 public class PotionBase extends ShopItem{
     private String name;
     private Size size;
-
 
     PotionBase(String name, Size size){
         this.name = name;
@@ -27,6 +14,18 @@ public class PotionBase extends ShopItem{
 
     public Size getSize() { return size; }
     public void setSize(Size size) { this.size = size; }
+
+    public enum Size{
+        SMALL(2),
+        MEDIUM(3),
+        LARGE(4);
+
+        private final long price;
+
+        Size(long price){ this.price = price; }
+
+        public long getPrice() { return price; }
+    }
 
     @Override
     public long getPrice() {
