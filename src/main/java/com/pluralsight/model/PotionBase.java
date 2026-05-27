@@ -4,7 +4,7 @@ public class PotionBase extends ShopItem{
     private String name;
     private Size size;
 
-    PotionBase(String name, Size size){
+    public PotionBase(String name, Size size){
         this.name = name;
         this.size = size;
     }
@@ -12,7 +12,12 @@ public class PotionBase extends ShopItem{
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public Size getSize() { return size; }
+    public String getSize() {
+        if(size == Size.LARGE)          { return "Large"; }
+        else if (size == Size.MEDIUM)   { return "Medium"; }
+        else if (size == Size.SMALL)    { return  "Small"; }
+        else return "";
+    }
     public void setSize(Size size) { this.size = size; }
 
     public enum Size{
@@ -30,5 +35,10 @@ public class PotionBase extends ShopItem{
     @Override
     public long getPrice() {
         return size.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "\tSize: " + getSize() + "\t Price: " + getPrice() + " Emeralds";
     }
 }
