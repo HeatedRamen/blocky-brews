@@ -56,7 +56,7 @@ public class Potion extends ShopItem{
     private long getAdditionalEffectCount(){
         return optionalEffects.stream()
                 .filter(OptionalEffect::isPremium)
-                .filter(effect -> effect.getType().equalsIgnoreCase("Enhancement"))
+                .filter(effect -> effect.getType().equalsIgnoreCase("Additional Effect"))
                 .count();
     }
     private long getAdditionalEffectCost(){
