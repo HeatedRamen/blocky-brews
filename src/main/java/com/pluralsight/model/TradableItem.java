@@ -1,10 +1,10 @@
 package com.pluralsight.model;
 
 
-public class TradableItems extends ShopItem{
+public class TradableItem extends ShopItem{
     private Item name;
 
-    public TradableItems(Item name) {
+    public TradableItem(Item name) {
         this.name = name;
     }
 
