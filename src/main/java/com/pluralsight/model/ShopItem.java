@@ -4,6 +4,4 @@ public abstract class ShopItem implements Priceable{
     private long price;
 
     public abstract long getPrice();
-
-
 }
