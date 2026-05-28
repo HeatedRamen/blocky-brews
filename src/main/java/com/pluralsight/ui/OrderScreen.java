@@ -12,8 +12,6 @@ import java.util.List;
 public class OrderScreen {
 
     private Order userOrder = new Order();
-    private static final int WIDTH = 67;
-    private static final String DIV = "=".repeat(WIDTH);
 
     public void run(){
         boolean isRunning = true;
@@ -64,94 +62,21 @@ public class OrderScreen {
     }
 
     public void promptPotion(){
-        System.out.println("""
-                ===================================================================
-                                        Main Potion Effect
-                ===================================================================
-                
-                                            1) Strength
-                                            2) Swiftness
-                                            3) Healing
-                                            4) Weakness
-                                            5) Slowness
-                                            6) Poison
-                
-                ===================================================================""");
+        System.out.println(MenuStrings.MAIN_EFFECT_MENU());
 
-        System.out.println("""
-                ===================================================================
-                                            Potion Size
-                ===================================================================
-                
-                                              1) Small
-                                              2) Medium
-                                              3) Large
-                
-                ===================================================================""");
+        System.out.println(MenuStrings.POTION_SIZE());
 
-        System.out.println("""
-                ===================================================================
-                                         Change Potion Form
-                ===================================================================
-                
-                                        (Default: Consumable)
-                                        1) Throwable
-                                        2) Lingering
-                                        0) Skip
-                
-                ===================================================================""");
+        System.out.println(MenuStrings.POTION_FORM_MENU());
 
-        System.out.println("""
-                ===================================================================
-                                    Additional Premium Attributes
-                ===================================================================
-                
-                                         1) Water Breathing
-                                         2) Fire Breathing
-                                         3) Night Vision
-                                         4) Invisibility
-                                         5) Slow Falling
-                                         0) Skip
-                
-                ===================================================================""");
+        System.out.println(MenuStrings.ADDITIONAL_EFFECT_MENU());
 
 
-        System.out.println("""
-                ===================================================================
-                                        Potion Enhancements
-                ===================================================================
-                
-                                         1) Stronger effect
-                                         2) Longer effect
-                                         0) Skip
-                
-                ===================================================================""");
+        System.out.println(MenuStrings.POTION_ENHANCEMENT());
 
-        System.out.println("""
-                ===================================================================
-                                          Visuals Effects
-                ===================================================================
-                
-                                           1) Glows
-                                           2) Swirly
-                                           3) Diamond sparkle
-                                           4) Gold Flakes
-                                           5) Emerald color
-                                           0) Skip
-                
-                ===================================================================""");
+        System.out.println(MenuStrings.VISUAL_EFFECT_MENU());
 
 
-        System.out.println("""
-                ===================================================================
-                                        Potion Helpers
-                ===================================================================
-
-                                        1) Rotten Flesh
-                                        2) Nether warts
-                                        0) Skip
-
-                ===================================================================""");
+        System.out.println(MenuStrings.POTION_HELPER_MENU());
     }
 
     public void addBasePotion(){
@@ -188,35 +113,6 @@ public class OrderScreen {
         clearConsole();
     }
 
-    public void promptBasePotionName() {
-
-        System.out.println("""
-                ===================================================================
-                                            Base Potion
-                ===================================================================
-
-                                            1) Mundane
-                                            2) Awkward
-                                            3) Thick
-                                            0) Cancel
-
-                ===================================================================""");
-    }
-
-    public void promptBasePotionSize(){
-        System.out.println("""
-                ===================================================================
-                                               Sizes
-                ===================================================================
-                
-                                       1) Small        (2 Emeralds)
-                                       2) Medium       (3 Emeralds)
-                                       3) Large        (4 Emeralds)
-                                       0) Cancel
-                
-                ===================================================================""");
-    }
-
     public void processBasePotionSelection(String potionName, String potionSize){
 
         switch (potionName){
@@ -242,19 +138,6 @@ public class OrderScreen {
         List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2"));
 
         processTradeSelection(InputValidation.getValidInput(validInput));
-    }
-
-    public void promptTrade(){
-        System.out.println("""
-                ===================================================================
-                                           Tradable Items
-                ===================================================================
-                
-                                    1) Golden Carrot (5 Emeralds)
-                                    2) XP bottle     (10 Emeralds)
-                                    0) Go back
-                
-                ===================================================================""");
     }
 
     public void processTradeSelection(String userChoice){
@@ -317,44 +200,16 @@ public class OrderScreen {
         }
     }
 
-    public void confirmOrder(){
-        System.out.println("""
-                ===================================================================
-                                           Confirm Order?
-                ===================================================================
-                
-                                             1) Confirm
-                                             0) Go back
-                
-                ===================================================================""");
-    }
-    public static void clearConsole(){
-        System.out.print("\033[H\033[2J");
-    }
 
-    public static void displayScreen() {
+    // Helper clear console
+    private static void clearConsole(){ System.out.print("\033[H\033[2J"); }
 
-        // Order menu with all the option
-        System.out.println("""
-                ===================================================================
-                                                    Order Menu
-                ┏━━━━━━━━━━━━━━━━━━━┓
-                ┃                   ┃
-                ┃                   ┃
-                ┃   ▄▄▄▄▄▄▄▄▄▄▄▄▄   ┃             1) Make Potion
-                ┃    |_|     |_|    ┃             2) Add Base Potion
-                ┃                   ┃             3) Tradable items
-                ┃       │   │       ┃             4) Check out
-                ┃    ═══│   │═══    ┃             0) Cancel Order
-                ┃       │   │       ┃
-                ┗━━━━━━━│   │━━━━━━━┛
-                        └───┘
-                ===================================================================""");
-    }
+   // Menu output
+    public static void displayScreen() { System.out.println(MenuStrings.ORDER_MENU()); }
+    public static void promptBasePotionName() { System.out.println(MenuStrings.BASE_POTION_MENU()); }
+    public static void promptBasePotionSize(){ System.out.println(MenuStrings.BASE_POTION_SIZE_MENU()); }
+    public static void promptTrade(){ System.out.println(MenuStrings.TRADE_MENU()); }
+    public static void confirmOrder(){ System.out.println(MenuStrings.CONFIRM_CHECKOUT_MENU()); }
 
-    private static String header(String title) {
-        int padding = (WIDTH - title.length()) / 2;
-        return "\n" + DIV + "\n" + " ".repeat(padding) + title + "\n" + DIV + "\n";
-    }
 }
 
