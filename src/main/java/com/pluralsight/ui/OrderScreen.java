@@ -20,11 +20,10 @@ public class OrderScreen {
 
         while(isRunning){
 
-            List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2", "3", "4"));
-
             // Show menu selection and take valid user input then process
             displayScreen();
-            isRunning = processMenuSelection(InputValidation.getValidInput(validInput));
+            isRunning = processMenuSelection(InputValidation.getValidInput
+                                            (InputValidation.options(4)));
         }
     }
 
@@ -70,7 +69,6 @@ public class OrderScreen {
 
         System.out.println(MenuStrings.ADDITIONAL_EFFECT_MENU());
 
-
         System.out.println(MenuStrings.POTION_ENHANCEMENT());
 
         System.out.println(MenuStrings.VISUAL_EFFECT_MENU());
@@ -83,12 +81,10 @@ public class OrderScreen {
 
         clearConsole();
 
-        // List of valid input
-        List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2", "3"));
-
         // Show menu selector for base potion "types"
         promptBasePotionName();
-        String potionName = InputValidation.getValidInput(validInput);
+        String potionName = InputValidation.getValidInput
+                            (InputValidation.options(3));
 
         // Check if user canceled
         if(potionName.equalsIgnoreCase("0")){
@@ -100,7 +96,8 @@ public class OrderScreen {
         // Show menu selector for base potion sizes
         clearConsole();
         promptBasePotionSize();
-        String potionSize = InputValidation.getValidInput(validInput);
+        String potionSize = InputValidation.getValidInput
+                            (InputValidation.options(4));
 
         // Check if user canceled
         if(potionSize.equalsIgnoreCase("0")){
@@ -134,10 +131,8 @@ public class OrderScreen {
         clearConsole();
         promptTrade();
 
-        // Get list of valid input
-        List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2"));
-
-        processTradeSelection(InputValidation.getValidInput(validInput));
+        processTradeSelection(InputValidation.getValidInput
+                             (InputValidation.options(2)));
     }
 
     public void processTradeSelection(String userChoice){
@@ -174,12 +169,10 @@ public class OrderScreen {
         }
         userOrder.displayOrder();
 
-        // Get list of valid input
-        List<String> validInput = new ArrayList<>(Arrays.asList("0", "1"));
-
         confirmOrder();
 
-        String userChoice = InputValidation.getValidInput(validInput);
+        String userChoice = InputValidation.getValidInput
+                            (InputValidation.options(1));
 
         switch(userChoice){
 

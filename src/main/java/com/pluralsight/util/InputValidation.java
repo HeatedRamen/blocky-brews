@@ -2,6 +2,8 @@ package com.pluralsight.util;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class InputValidation {
     private static Scanner input = new Scanner(System.in);
@@ -26,4 +28,11 @@ public class InputValidation {
             System.out.println("HRGHHHHHH! (Enter a valid choice)");
         }
     }
+
+    public static List<String> options(int max) {
+        return IntStream.rangeClosed(0, max)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.toList());
+    }
+
 }
