@@ -18,6 +18,7 @@ public class ReceiptWriter {
                                        BLOCKY BREWS
             ===================================================================
             """;
+    private static String spacer = "\n===================================================================";
 
     public static void writeReceipt(Order userOrder){
 
@@ -32,8 +33,13 @@ public class ReceiptWriter {
             String line = userOrder.getOrder().stream()
                     .map(ShopItem::toString)
                     .collect(Collectors.joining("\n"));
-
             receiptWriter.write(line);
+
+            receiptWriter.write(spacer);
+            line = String.format("\nOrder Total: %43d Emerald(s)", userOrder.getTotal());
+            receiptWriter.write(line);
+            receiptWriter.write(spacer);
+
             receiptWriter.close();
 
         } catch(IOException e){
