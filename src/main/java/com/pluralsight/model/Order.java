@@ -5,36 +5,36 @@ import java.util.Collections;
 import java.util.List;
 
 public class Order {
-    private List<ShopItem> playerOrder;
+    private List<ShopItem> userOrder;
 
     public Order(){
-        playerOrder = new ArrayList<>();
+        userOrder = new ArrayList<>();
     }
 
     public void addItem(ShopItem item){
-        playerOrder.add(item);
+        userOrder.add(item);
     }
     public void displayOrder(){
 
         // Reverse the order to show newest items on top
         reverseOrder();
-        playerOrder.forEach(System.out::println);
+        userOrder.forEach(System.out::println);
 
         // Reverse order back to normal in case they add more
         reverseOrder();
 
-        System.out.println("Order total: \t\t" + getTotal() + " Emeralds");
+        System.out.printf("\nOrder Total %44d Emerald(s)\n", getTotal());
     }
 
     public long getTotal(){
-        return playerOrder.stream()
+        return userOrder.stream()
                 .mapToLong(ShopItem::getPrice)
                 .sum();
     }
 
-    public List<ShopItem> getOrder() { return playerOrder; }
-    public void reverseOrder(){ Collections.reverse(playerOrder); }
+    public List<ShopItem> getOrder() { return userOrder; }
+    public void reverseOrder(){ Collections.reverse(userOrder); }
     // Clear order for when they cancel
-    public void clearOrder(){ playerOrder.clear(); }
+    public void clearOrder(){ userOrder.clear(); }
 
 }
