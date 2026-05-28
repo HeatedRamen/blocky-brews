@@ -54,26 +54,38 @@ public class OrderScreen {
     public void promptPotion(){
         System.out.println("""
                 ===================================================================
-                                       Main Potion effect
+                                        Main Potion Effect
                 ===================================================================
                 
-                                    1) Strength
-                                    2) Swiftness
-                                    3) Healing
-                                    4) Weakness
-                                    5) Slowness
-                                    6) Poison
+                                            1) Strength
+                                            2) Swiftness
+                                            3) Healing
+                                            4) Weakness
+                                            5) Slowness
+                                            6) Poison
                 
                 ===================================================================""");
 
         System.out.println("""
                 ===================================================================
-                                           Potion Size
+                                            Potion Size
                 ===================================================================
                 
-                                    1) Small
-                                    2) Medium
-                                    3) Large
+                                              1) Small
+                                              2) Medium
+                                              3) Large
+                
+                ===================================================================""");
+
+        System.out.println("""
+                ===================================================================
+                                         Change Potion Form
+                ===================================================================
+                
+                                        (Default: Consumable)
+                                        1) Throwable
+                                        2) Lingering
+                                        0) Skip
                 
                 ===================================================================""");
 
@@ -82,57 +94,51 @@ public class OrderScreen {
                                     Additional Premium Attributes
                 ===================================================================
                 
-                                    1) Water Breathing
-                                    2) Fire Breathing
-                                    3) Night Vision
-                                    4) Invisibility
-                                    5) Slow Falling
+                                         1) Water Breathing
+                                         2) Fire Breathing
+                                         3) Night Vision
+                                         4) Invisibility
+                                         5) Slow Falling
+                                         0) Skip
                 
                 ===================================================================""");
 
 
         System.out.println("""
                 ===================================================================
-                                       Potion Enhancements 
+                                        Potion Enhancements
                 ===================================================================
                 
-                                    1) Stronger effect
-                                    2) Longer effect
-                                   
+                                         1) Stronger effect
+                                         2) Longer effect
+                                         0) Skip
                 
                 ===================================================================""");
 
         System.out.println("""
                 ===================================================================
-                                           Visuals Effects
+                                          Visuals Effects
                 ===================================================================
                 
-                                    1) Glows
-                                    2) Swirly
-                                    3) Diamond sparkle
-                                    4) 
+                                           1) Glows
+                                           2) Swirly
+                                           3) Diamond sparkle
+                                           4) Gold Flakes
+                                           5) Emerald color
+                                           0) Skip
                 
                 ===================================================================""");
 
-        System.out.println("""
-                ===================================================================
-                                           Change Potion Form
-                ===================================================================
-                
-                                    (Default: Consumable)
-                                    1) Throwable
-                                    2) Lingering
-                
-                ===================================================================""");
 
         System.out.println("""
                 ===================================================================
-                                                Potion Helpers
+                                        Potion Helpers
                 ===================================================================
-                
-                                    1) Rotten Flesh
-                                    2) Nether warts
-                
+
+                                        1) Rotten Flesh
+                                        2) Nether warts
+                                        0) Skip
+
                 ===================================================================""");
     }
 
