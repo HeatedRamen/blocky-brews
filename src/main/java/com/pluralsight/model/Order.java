@@ -22,8 +22,15 @@ public class Order {
 
         // Reverse order back to normal in case they add more
         reverseOrder();
+
+        System.out.println("Order total: \t\t" + getTotal() + " Emeralds");
     }
 
+    public long getTotal(){
+        return playerOrder.stream()
+                .mapToLong(ShopItem::getPrice)
+                .sum();
+    }
     public void reverseOrder(){ Collections.reverse(playerOrder); }
     // Clear order for when they cancel
     public void clearOrder(){ playerOrder.clear(); }
