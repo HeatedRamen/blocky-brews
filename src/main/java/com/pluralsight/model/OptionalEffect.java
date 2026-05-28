@@ -4,7 +4,7 @@ public class OptionalEffect {
     private String name, type;
     private boolean premium;
 
-    OptionalEffect(String name, String type, boolean premium){
+    public OptionalEffect(String name, String type, boolean premium){
         this.name = name;
         this.type = type;
         this.premium = premium;
