@@ -7,11 +7,20 @@ public class Potion extends ShopItem{
     private List<OptionalEffect> optionalEffects;
     private String mainEffect;
     private PotionSize size;
+    private String potionType;
+
+    public Potion(){
+        super();
+        mainEffect = "";
+        potionType = "Consumable";
+        this.optionalEffects = new ArrayList<>();
+    }
 
     public Potion(PotionSize size, String mainEffect){
         super();
         this.size = size;
         this.mainEffect = mainEffect;
+        potionType = "Consumable";
         this.optionalEffects = new ArrayList<>();
     }
 
