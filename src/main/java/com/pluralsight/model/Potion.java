@@ -8,16 +8,11 @@ public class Potion extends ShopItem{
     private String mainEffect;
     private PotionSize size;
 
-    public Potion(){
-        super();
-        mainEffect = "";
-        optionalEffects = new ArrayList<>();
-    }
-    public Potion(PotionSize size, String mainEffect, List<OptionalEffect> optionalEffects){
+    public Potion(PotionSize size, String mainEffect){
         super();
         this.size = size;
         this.mainEffect = mainEffect;
-        this.optionalEffects = optionalEffects;
+        this.optionalEffects = new ArrayList<>();
     }
 
     public List<OptionalEffect> getOptionalEffects() { return optionalEffects; }
