@@ -1,11 +1,15 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.model.*;
+import com.pluralsight.util.InputValidation;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class OrderScreen {
-    static Scanner input = new Scanner(System.in);
+
     private Order userOrder = new Order();
 
     public void run(){
@@ -14,14 +18,13 @@ public class OrderScreen {
         clearConsole();
 
         while(isRunning){
-            displayScreen();
-            isRunning = processMenuSelection(promptSelection());
-        }
-    }
 
-    public String promptSelection() {
-        System.out.println("Enter in your choice");
-        return input.nextLine().trim();
+            List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2", "3", "4"));
+
+            // Show menu selection and take valid user input then process
+            displayScreen();
+            isRunning = processMenuSelection(InputValidation.getValidInput(validInput));
+        }
     }
 
     public boolean processMenuSelection(String userChoice){
@@ -29,20 +32,24 @@ public class OrderScreen {
             case "1":
                 makePotion();
                 return true;
+
             case "2":
                 addBasePotion();
                 return true;
+
             case "3":
                 addTrade();
                 return true;
+
             case "4":
                 checkOut();
                 return true;
+
             case "0":
                 userOrder.clearOrder();
                 return false;
+
             default:
-                System.out.println("HRGHHHHHH! (Enter a valid choice)");
                 return true;
         }
     }
@@ -139,17 +146,31 @@ public class OrderScreen {
     public void addBasePotion(){
 
         clearConsole();
-        promptBasePotionName();
-        String potionName = promptSelection();
 
-        // Check if they canceled
+        // List of valid input
+        List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2", "3"));
+
+        // Show menu selector for base potion "types"
+        promptBasePotionName();
+        String potionName = InputValidation.getValidInput(validInput);
+
+        // Check if user canceled
         if(potionName.equalsIgnoreCase("0")){
             VillagerExpression.angry();
             return;
         }
 
+        // Show menu selector for base potion sizes
         promptBasePotionSize();
-        processBasePotionSelection(potionName, promptSelection());
+        String potionSize = InputValidation.getValidInput(validInput);
+
+        // Check if user canceled
+        if(potionSize.equalsIgnoreCase("0")){
+            VillagerExpression.angry();
+            return;
+        }
+
+        processBasePotionSelection(potionName, potionSize);
 
     }
 
@@ -188,25 +209,25 @@ public class OrderScreen {
             case "1" -> potionName = "Mundane";
             case "2" -> potionName = "Awkward";
             case "3" -> potionName = "Thick";
-            default -> {
-                System.out.println("HRGHHHHHH! (Enter a valid choice)");
-                return;
-            }
         }
 
         switch (potionSize){
             case "1" -> userOrder.addItem(new PotionBase(potionName, PotionBase.Size.SMALL));
             case "2" -> userOrder.addItem(new PotionBase(potionName, PotionBase.Size.MEDIUM));
             case "3" -> userOrder.addItem(new PotionBase(potionName, PotionBase.Size.LARGE));
-            case "0" -> VillagerExpression.angry();
-            default -> System.out.println("HRGHHHHHH! (Enter a valid choice)");
         }
     }
 
     public void addTrade() {
+
+        // Clear console then show menu selection
         clearConsole();
         promptTrade();
-        processTradeSelection(promptSelection());
+
+        // Get list of valid input
+        List<String> validInput = new ArrayList<>(Arrays.asList("0", "1", "2"));
+
+        processTradeSelection(InputValidation.getValidInput(validInput));
     }
 
     public void promptTrade(){
@@ -217,7 +238,7 @@ public class OrderScreen {
                 
                                     1) Golden Carrot (5 Emeralds)
                                     2) XP bottle     (10 Emeralds)
-                                    3) Go back
+                                    0) Go back
                 
                 ===================================================================""");
     }
@@ -225,18 +246,22 @@ public class OrderScreen {
     public void processTradeSelection(String userChoice){
 
         switch (userChoice){
+
+            // Add in Golden Carrot to the order
             case "1":
                 userOrder.addItem(new TradableItems(TradableItems.Item.GOLDEN_CARROT));
                 break;
+
+            // Add in Xp Bottle to the order
             case "2":
                 userOrder.addItem(new TradableItems(TradableItems.Item.XP_BOTTLE));
                 break;
-            case "3":
+
+            // Clear console before showing the angry villager for wasting his time
+            case "0":
                 clearConsole();
                 VillagerExpression.angry();
                 break;
-            default:
-                System.out.println("HRGHHHHHH! (Enter a valid choice)");
         }
     }
 
@@ -250,6 +275,8 @@ public class OrderScreen {
     }
 
     public static void displayScreen() {
+
+        // Order menu with all the option
         System.out.println("""
                 ===================================================================
                                                     Order Menu

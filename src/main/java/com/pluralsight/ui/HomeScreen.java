@@ -1,9 +1,13 @@
 package com.pluralsight.ui;
 
-import java.util.Scanner;
+import com.pluralsight.util.InputValidation;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class HomeScreen {
-    static Scanner input = new Scanner(System.in);
 
     public void run(){
 
@@ -15,7 +19,11 @@ public class HomeScreen {
 
 
         while(isRunning){
-            isRunning = processSelection(promptSelection());
+            // List of valid input for input valid input
+            List<String> validInput = new ArrayList<>(Arrays.asList("0", "1"));
+
+
+            isRunning = processSelection(InputValidation.getValidInput(validInput));
         }
     }
 
@@ -39,19 +47,13 @@ public class HomeScreen {
                 ===================================================================""");
     }
 
-    public String promptSelection(){
-
-        // Prompt the user for their choice and returns the trimmed input
-        System.out.println("Enter in your choice");
-        return input.nextLine().trim();
-    }
-
     public boolean processSelection(String userChoice){
 
         // Switch case based off user input
         switch(userChoice){
 
             case "1":
+                // Run the order menu
                 OrderScreen orderScreen = new OrderScreen();
                 orderScreen.run();
 
@@ -65,8 +67,6 @@ public class HomeScreen {
                 return false;
 
             default:
-                // *Angry villager noise*
-                System.out.println("HRGHHHHHH! (Enter a valid choice)");
                 return true;
         }
     }
