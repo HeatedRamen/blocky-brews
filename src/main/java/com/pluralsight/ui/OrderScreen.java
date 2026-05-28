@@ -1,6 +1,7 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.model.*;
+import com.pluralsight.util.ReceiptWriter;
 
 import java.util.Scanner;
 
@@ -243,6 +244,31 @@ public class OrderScreen {
     public void checkOut() {
         clearConsole();
         userOrder.displayOrder();
+        confirmOrder();
+
+        switch (promptSelection()){
+            case "1":
+                ReceiptWriter.writeReceipt(userOrder);
+                userOrder.clearOrder();
+                return;
+            case "0":
+                VillagerExpression.angry();
+                return;
+            default:
+                System.out.println("HRGHHHHHH! (Enter a valid choice)");
+        }
+
+    }
+    public void confirmOrder(){
+        System.out.println("""
+                ===================================================================
+                                           Confirm Order?
+                ===================================================================
+                
+                                             1) Confirm
+                                             0) Go back
+                
+                ===================================================================""");
     }
 
     public static void clearConsole(){
