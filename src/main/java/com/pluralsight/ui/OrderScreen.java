@@ -2,6 +2,7 @@ package com.pluralsight.ui;
 
 import com.pluralsight.model.*;
 import com.pluralsight.util.InputValidation;
+import com.pluralsight.util.ReceiptWriter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,8 +43,7 @@ public class OrderScreen {
                 return true;
 
             case "4":
-                checkOut();
-                return true;
+                return checkOut();
 
             case "0":
                 userOrder.clearOrder();
@@ -265,11 +265,47 @@ public class OrderScreen {
         }
     }
 
-    public void checkOut() {
+    public boolean checkOut() {
         clearConsole();
+
         userOrder.displayOrder();
+
+        // Get list of valid input
+        List<String> validInput = new ArrayList<>(Arrays.asList("0", "1"));
+
+        confirmOrder();
+
+        String userChoice = InputValidation.getValidInput(validInput);
+
+        switch(userChoice){
+
+            // Write receipt, empty the order, then returns to home
+            case "1":
+                ReceiptWriter.writeReceipt(userOrder);
+                userOrder.clearOrder();
+                return false;
+
+            // Shows angry villager for wasting his time then return back to order menu
+            case "0":
+                VillagerExpression.angry();
+                return true;
+
+            default:
+                return true;
+        }
     }
 
+    public void confirmOrder(){
+        System.out.println("""
+                ===================================================================
+                                           Confirm Order?
+                ===================================================================
+                
+                                             1) Confirm
+                                             0) Go back
+                
+                ===================================================================""");
+    }
     public static void clearConsole(){
         System.out.print("\033[H\033[2J");
     }
