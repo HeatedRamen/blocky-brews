@@ -18,12 +18,14 @@ public class Order {
 
         // Reverse the order to show newest items on top
         reverseOrder();
+        System.out.println("===================================================================");
         userOrder.forEach(System.out::println);
+        System.out.println("===================================================================");
 
         // Reverse order back to normal in case they add more
         reverseOrder();
 
-        System.out.printf("\nOrder Total %44d Emerald(s)\n", getTotal());
+        System.out.printf("Order Total: %43d Emerald(s)\n", getTotal());
     }
 
     public long getTotal(){

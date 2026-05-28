@@ -39,6 +39,6 @@ public class PotionBase extends ShopItem{
 
     @Override
     public String toString() {
-        return "Name: " + name + "\tSize: " + getSize() + "\t Price: " + getPrice() + " Emeralds";
+        return String.format("Potion Base: %19s Potion %16d Emerald(s)", getSize() + " " + getName(), getPrice());
     }
 }

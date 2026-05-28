@@ -32,6 +32,6 @@ public class TradableItems extends ShopItem{
 
     @Override
     public String toString() {
-        return "Name: " + getName() + "\tPrice: " + getPrice() + " Emeralds";
+        return String.format("Item: %33s %16d Emerald(s)", getName(), getPrice());
     }
 }
