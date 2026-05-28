@@ -35,4 +35,10 @@ public class InputValidation {
                 .collect(Collectors.toList());
     }
 
+    public static List<String> options(int min, int max) {
+        return IntStream.rangeClosed(min, max)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.toList());
+    }
+
 }
