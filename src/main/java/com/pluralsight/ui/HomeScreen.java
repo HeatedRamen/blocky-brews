@@ -58,7 +58,6 @@ public class HomeScreen {
                 orderScreen.run();
 
                 // Clears and displays home again when return from order screen
-                clearConsole();
                 displayScreen();
                 return true;
 

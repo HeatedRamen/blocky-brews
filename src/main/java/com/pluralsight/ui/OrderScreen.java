@@ -2,7 +2,7 @@ package com.pluralsight.ui;
 
 import com.pluralsight.model.*;
 import com.pluralsight.util.InputValidation;
-import com.pluralsight.util.ReceiptWriter;
+import com.pluralsight.data.ReceiptWriter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +12,8 @@ import java.util.List;
 public class OrderScreen {
 
     private Order userOrder = new Order();
+    private static final int WIDTH = 67;
+    private static final String DIV = "=".repeat(WIDTH);
 
     public void run(){
         boolean isRunning = true;
@@ -30,6 +32,7 @@ public class OrderScreen {
 
     public boolean processMenuSelection(String userChoice){
         switch(userChoice){
+
             case "1":
                 makePotion();
                 return true;
@@ -46,7 +49,9 @@ public class OrderScreen {
                 return checkOut();
 
             case "0":
+                clearConsole();
                 userOrder.clearOrder();
+                VillagerExpression.angry();
                 return false;
 
             default:
@@ -162,22 +167,25 @@ public class OrderScreen {
 
         // Check if user canceled
         if(potionName.equalsIgnoreCase("0")){
+            clearConsole();
             VillagerExpression.angry();
             return;
         }
 
         // Show menu selector for base potion sizes
+        clearConsole();
         promptBasePotionSize();
         String potionSize = InputValidation.getValidInput(validInput);
 
         // Check if user canceled
         if(potionSize.equalsIgnoreCase("0")){
+            clearConsole();
             VillagerExpression.angry();
             return;
         }
 
         processBasePotionSelection(potionName, potionSize);
-
+        clearConsole();
     }
 
     public void promptBasePotionName() {
@@ -255,12 +263,14 @@ public class OrderScreen {
 
             // Add in Golden Carrot to the order
             case "1":
-                userOrder.addItem(new TradableItems(TradableItems.Item.GOLDEN_CARROT));
+                clearConsole();
+                userOrder.addItem(new TradableItem(TradableItem.Item.GOLDEN_CARROT));
                 break;
 
             // Add in Xp Bottle to the order
             case "2":
-                userOrder.addItem(new TradableItems(TradableItems.Item.XP_BOTTLE));
+                clearConsole();
+                userOrder.addItem(new TradableItem(TradableItem.Item.XP_BOTTLE));
                 break;
 
             // Clear console before showing the angry villager for wasting his time
@@ -274,6 +284,11 @@ public class OrderScreen {
     public boolean checkOut() {
         clearConsole();
 
+        if(userOrder.isEmpty()){
+            VillagerExpression.angry();
+            System.out.println("        Hrghh! Hrghhh!! (Add an item before checking out)");
+            return true;
+        }
         userOrder.displayOrder();
 
         // Get list of valid input
@@ -293,6 +308,7 @@ public class OrderScreen {
 
             // Shows angry villager for wasting his time then return back to order menu
             case "0":
+                clearConsole();
                 VillagerExpression.angry();
                 return true;
 
@@ -334,6 +350,11 @@ public class OrderScreen {
                 ┗━━━━━━━│   │━━━━━━━┛
                         └───┘
                 ===================================================================""");
+    }
+
+    private static String header(String title) {
+        int padding = (WIDTH - title.length()) / 2;
+        return "\n" + DIV + "\n" + " ".repeat(padding) + title + "\n" + DIV + "\n";
     }
 }
 
