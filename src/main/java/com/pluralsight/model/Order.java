@@ -31,6 +31,8 @@ public class Order {
                 .mapToLong(ShopItem::getPrice)
                 .sum();
     }
+
+    public List<ShopItem> getOrder() { return playerOrder; }
     public void reverseOrder(){ Collections.reverse(playerOrder); }
     // Clear order for when they cancel
     public void clearOrder(){ playerOrder.clear(); }
