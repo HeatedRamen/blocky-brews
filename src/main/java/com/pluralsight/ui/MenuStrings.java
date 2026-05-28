@@ -7,18 +7,21 @@ public class MenuStrings {
                 ===================================================================
                                                     Order Menu
                 ===================================================================
-                ┏━━━━━━━━━━━━━━━━━━━┓
-                ┃                   ┃
-                ┃                   ┃
-                ┃   ▄▄▄▄▄▄▄▄▄▄▄▄▄   ┃             1) Make Potion
-                ┃    |_|     |_|    ┃             2) Add Base Potion
-                ┃                   ┃             3) Tradable items
-                ┃       │   │       ┃             4) Check out
-                ┃    ═══│   │═══    ┃             0) Cancel Order
-                ┃       │   │       ┃
-                ┗━━━━━━━│   │━━━━━━━┛
-                        └───┘
-                ===================================================================""";
+                                            Order Menu
+                ===================================================================
+                   ┏━━━━━━━━━━━━━━━━━━━┓
+                   ┃                   ┃
+                   ┃                   ┃
+                   ┃   ▄▄▄▄▄▄▄▄▄▄▄▄▄   ┃          1) Make Potion
+                   ┃    |_|     |_|    ┃          2) Add Base Potion
+                   ┃                   ┃          3) Tradable items
+                   ┃       │   │       ┃          4) Check out
+                   ┃    ═══│   │═══    ┃          0) Cancel Order
+                   ┃       │   │       ┃
+                   ┗━━━━━━━│   │━━━━━━━┛
+                           └───┘
+                ===================================================================
+                """;
 
     }
 
@@ -72,7 +75,7 @@ public class MenuStrings {
                 ===================================================================
                 
                                          1) Water Breathing
-                                         2) Fire Breathing
+                                         2) Fire Resistance
                                          3) Night Vision
                                          4) Invisibility
                                          5) Slow Falling
@@ -89,6 +92,7 @@ public class MenuStrings {
                 
                                          1) Stronger effect
                                          2) Longer effect
+                                         3) Both
                                          0) Skip
                 
                 ===================================================================""";
@@ -102,7 +106,7 @@ public class MenuStrings {
                 
                                            1) Glows
                                            2) Swirly
-                                           3) Diamond sparkle
+                                           3) Diamond Sparkle
                                            4) Gold Flakes
                                            5) Emerald color
                                            0) Skip
@@ -117,7 +121,7 @@ public class MenuStrings {
                 ===================================================================
 
                                         1) Rotten Flesh
-                                        2) Nether warts
+                                        2) Nether Warts
                                         0) Skip
 
                 ===================================================================""";
