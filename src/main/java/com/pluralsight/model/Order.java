@@ -5,22 +5,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class Order {
-    private List<ShopItem> userOrder;
+    private List<ShopItem> items;
+    private static final int WIDTH = 67;
+    private static final String DIV = "=".repeat(WIDTH);
 
     public Order(){
-        userOrder = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
     public void addItem(ShopItem item){
-        userOrder.add(item);
+        items.add(item);
     }
     public void displayOrder(){
 
         // Reverse the order to show newest items on top
         reverseOrder();
-        System.out.println("===================================================================");
-        userOrder.forEach(System.out::println);
-        System.out.println("===================================================================");
+
+        System.out.println(DIV);
+        items.forEach(System.out::println);
+        System.out.println(DIV);
 
         // Reverse order back to normal in case they add more
         reverseOrder();
@@ -29,14 +32,16 @@ public class Order {
     }
 
     public long getTotal(){
-        return userOrder.stream()
+        return items.stream()
                 .mapToLong(ShopItem::getPrice)
                 .sum();
     }
 
-    public List<ShopItem> getOrder() { return userOrder; }
-    public void reverseOrder(){ Collections.reverse(userOrder); }
+    public boolean isEmpty(){ return items.isEmpty(); }
+    public List<ShopItem> getItems() { return items; }
+    public void reverseOrder(){ Collections.reverse(items); }
     // Clear order for when they cancel
-    public void clearOrder(){ userOrder.clear(); }
+    public void clearOrder(){ items.clear(); }
+
 
 }
