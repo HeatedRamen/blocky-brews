@@ -10,13 +10,11 @@ public class Potion extends ShopItem{
     private PotionSize size;
 
     public Potion(){
-        super();
         mainEffect = "";
         this.optionalEffects = new ArrayList<>();
     }
 
     public Potion(PotionSize size, String mainEffect){
-        super();
         this.size = size;
         this.mainEffect = mainEffect;
         this.optionalEffects = new ArrayList<>();
