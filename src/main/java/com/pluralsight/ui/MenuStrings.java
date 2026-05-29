@@ -2,10 +2,26 @@ package com.pluralsight.ui;
 
 public class MenuStrings {
 
-    public static final String ORDER_MENU() {
+    public static final String HOME_SCREEN(){
         return """
                 ===================================================================
-                                                    Order Menu
+                                               WELCOME TO BLOCKY BREWS
+                ┏━━━━━━━━━━━━━━━━━━━┓
+                ┃                   ┃
+                ┃                   ┃
+                ┃   ▄▄▄▄▄▄▄▄▄▄▄▄▄   ┃
+                ┃    |_|     |_|    ┃               1) New Order
+                ┃                   ┃               0) Exit
+                ┃       │   │       ┃
+                ┃    ═══│   │═══    ┃
+                ┃       │   │       ┃
+                ┗━━━━━━━│   │━━━━━━━┛
+                        └───┘
+                ===================================================================""";
+    }
+
+    public static final String ORDER_MENU() {
+        return """
                 ===================================================================
                                             Order Menu
                 ===================================================================
@@ -47,9 +63,9 @@ public class MenuStrings {
                                             Potion Size
                 ===================================================================
                 
-                                              1) Small
-                                              2) Medium
-                                              3) Large
+                                      1) Small  (10 Emeralds)
+                                      2) Medium (15 Emeralds)
+                                      3) Large  (20 Emeralds)
                 
                 ===================================================================""";
     }

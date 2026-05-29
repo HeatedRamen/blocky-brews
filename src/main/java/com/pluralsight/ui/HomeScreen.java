@@ -2,11 +2,6 @@ package com.pluralsight.ui;
 
 import com.pluralsight.util.InputValidation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
 public class HomeScreen {
 
     public void run(){
@@ -19,32 +14,16 @@ public class HomeScreen {
 
 
         while(isRunning){
-            // List of valid input for input valid input
-            List<String> validInput = new ArrayList<>(Arrays.asList("0", "1"));
 
-
-            isRunning = processSelection(InputValidation.getValidInput(validInput));
+            isRunning = processSelection(InputValidation.getValidInput
+                                        (InputValidation.options(1)));
         }
     }
 
     public static void displayScreen(){
 
         // Menu with our villager trader
-        System.out.println("""
-                ===================================================================
-                                               WELCOME TO BLOCKY BREWS
-                ┏━━━━━━━━━━━━━━━━━━━┓
-                ┃                   ┃
-                ┃                   ┃
-                ┃   ▄▄▄▄▄▄▄▄▄▄▄▄▄   ┃
-                ┃    |_|     |_|    ┃               1) New Order
-                ┃                   ┃               0) Exit
-                ┃       │   │       ┃
-                ┃    ═══│   │═══    ┃
-                ┃       │   │       ┃
-                ┗━━━━━━━│   │━━━━━━━┛
-                        └───┘
-                ===================================================================""");
+        System.out.println(MenuStrings.HOME_SCREEN());
     }
 
     public boolean processSelection(String userChoice){
