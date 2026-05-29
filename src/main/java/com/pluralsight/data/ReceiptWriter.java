@@ -38,12 +38,12 @@ public class ReceiptWriter {
             receiptWriter.write(line);
 
             // Spacers with Order total in between
-            receiptWriter.write(DIV);
+            receiptWriter.write("\n" + DIV + "\n");
 
             line = String.format("\nOrder Total: %43d Emerald(s)", userOrder.getTotal());
             receiptWriter.write(line);
 
-            receiptWriter.write(DIV);
+            receiptWriter.write("\n" + DIV + "\n");
 
             receiptWriter.close();
 
@@ -54,6 +54,6 @@ public class ReceiptWriter {
 
     private static String header(String title) {
         int padding = (WIDTH - title.length()) / 2;
-        return "\n" + DIV + "\n" + " ".repeat(padding) + title + "\n" + DIV;
+        return "\n" + DIV + "\n" + " ".repeat(padding) + title + "\n" + DIV + "\n";
     }
 }
