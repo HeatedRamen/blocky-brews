@@ -79,7 +79,7 @@ public class MenuStrings {
                                         (Default: Consumable)
                                         1) Throwable
                                         2) Lingering
-                                        0) Skip
+                                        0) Continue
                 
                 ===================================================================""";
     }
@@ -95,7 +95,7 @@ public class MenuStrings {
                                          3) Night Vision
                                          4) Invisibility
                                          5) Slow Falling
-                                         0) Skip
+                                         0) Continue
                 
                 ===================================================================""";
     }
@@ -109,7 +109,7 @@ public class MenuStrings {
                                          1) Stronger effect
                                          2) Longer effect
                                          3) Both
-                                         0) Skip
+                                         0) Continue
                 
                 ===================================================================""";
     }
@@ -125,7 +125,7 @@ public class MenuStrings {
                                            3) Diamond Sparkle
                                            4) Gold Flakes
                                            5) Emerald color
-                                           0) Skip
+                                           0) Continue
                 
                 ===================================================================""";
     }
@@ -138,7 +138,7 @@ public class MenuStrings {
 
                                         1) Rotten Flesh
                                         2) Nether Warts
-                                        0) Skip
+                                        0) Continue
 
                 ===================================================================""";
     }
