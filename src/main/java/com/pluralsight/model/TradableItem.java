@@ -22,7 +22,7 @@ public class TradableItem extends ShopItem{
     }
 
     public String getName(){
-        if (this.name == Item.GOLDEN_CARROT)    { return "Golden Carrot"; }
+        if (name == Item.GOLDEN_CARROT)    { return "Golden Carrot"; }
             else if (name == Item.XP_BOTTLE)    { return "Xp Bottle"; }
             else return "";
     }
