@@ -21,6 +21,6 @@ public class OptionalEffect {
 
     @Override
     public String toString() {
-        return type + ": " + name;
+        return String.format( "\t- %-20s %s", type, name);
     }
 }

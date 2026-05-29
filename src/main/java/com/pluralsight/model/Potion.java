@@ -8,12 +8,10 @@ public class Potion extends ShopItem{
     private List<OptionalEffect> optionalEffects;
     private String mainEffect;
     private PotionSize size;
-    private String potionType;
 
     public Potion(){
         super();
         mainEffect = "";
-        potionType = "Consumable";
         this.optionalEffects = new ArrayList<>();
     }
 
@@ -21,7 +19,6 @@ public class Potion extends ShopItem{
         super();
         this.size = size;
         this.mainEffect = mainEffect;
-        potionType = "Consumable";
         this.optionalEffects = new ArrayList<>();
     }
 
@@ -32,7 +29,13 @@ public class Potion extends ShopItem{
     public String getMainEffect() { return mainEffect; }
     public void setMainEffect(String mainEffect) { this.mainEffect = mainEffect; }
 
-    public PotionSize getSize() { return size; }
+    public String getSize() {
+        if(size == PotionSize.LARGE)            { return "Large"; }
+        else if (size == PotionSize.MEDIUM)     { return "Medium"; }
+        else if (size == PotionSize.SMALL)      { return "Small"; }
+        else                                      return "";
+    }
+
     public void setSize(PotionSize size) { this.size = size; }
 
     public enum PotionSize{
@@ -102,6 +105,9 @@ public class Potion extends ShopItem{
 
     @Override
     public String toString() {
-        return String.format("%10s Potion\n%s\n", mainEffect, listOptionalEffects());
+        return String.format("""
+                %-27s %28d Emerald(s)
+                %s""",
+                getSize() + " " + mainEffect + " Potion", getPrice(), listOptionalEffects());
     }
 }
