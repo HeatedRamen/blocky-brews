@@ -34,7 +34,7 @@ public class OrderScreen {
                 return true;
 
             case "3":
-                addTrade();
+                addTradableItem();
                 return true;
 
             case "4":
@@ -90,7 +90,7 @@ public class OrderScreen {
         processPotionHelper(InputValidation.getValidInput
                     (InputValidation.options(2)), potion);
 
-        userOrder.addItem(potion);
+        confirmPotion(potion);
     }
 
     public String processMainEffect(String userChoice){
@@ -259,6 +259,30 @@ public class OrderScreen {
         }
     }
 
+    public void confirmPotion(Potion potion){
+
+        clearConsole();
+
+        System.out.println(MenuStrings.CONFIRM_POTION_HEADER());
+        System.out.println(potion);
+        System.out.println(MenuStrings.CONFIRM_POTION());
+
+        String userChoice = InputValidation.getValidInput(
+                InputValidation.options(1));
+
+        switch (userChoice){
+
+            case "1":
+                userOrder.addItem(potion);
+                break;
+
+            case "0":
+                VillagerExpression.angry();
+                System.out.println("                Hrghhh... (Potion discarded)");
+                break;
+        }
+    }
+
     public void addBasePotion(){
 
         clearConsole();
@@ -307,7 +331,7 @@ public class OrderScreen {
         }
     }
 
-    public void addTrade() {
+    public void addTradableItem() {
 
         // Clear console then show menu selection
         clearConsole();
