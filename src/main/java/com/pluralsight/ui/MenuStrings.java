@@ -1,8 +1,10 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.model.Potion;
+
 public class MenuStrings {
 
-    public static final String HOME_SCREEN(){
+    public static final String HOME_SCREEN() {
         return """
                 ===================================================================
                                                WELCOME TO BLOCKY BREWS
@@ -41,7 +43,7 @@ public class MenuStrings {
 
     }
 
-    public static final String MAIN_EFFECT_MENU(){
+    public static final String MAIN_EFFECT_MENU() {
         return """
                 ===================================================================
                                         Main Potion Effect
@@ -57,7 +59,7 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String POTION_SIZE(){
+    public static final String POTION_SIZE() {
         return """
                 ===================================================================
                                             Potion Size
@@ -70,7 +72,7 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String POTION_FORM_MENU(){
+    public static final String POTION_FORM_MENU() {
         return """
                 ===================================================================
                                          Change Potion Form
@@ -84,37 +86,40 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String ADDITIONAL_EFFECT_MENU(){
-        return """
-                ===================================================================
-                                    Additional Premium Attributes
-                ===================================================================
-                
-                                         1) Water Breathing
-                                         2) Fire Resistance
-                                         3) Night Vision
-                                         4) Invisibility
-                                         5) Slow Falling
-                                         0) Continue
-                
-                ===================================================================""";
+    public static final String ADDITIONAL_EFFECT_MENU(Potion.PotionSize size) {
+
+        return String.format("""
+                        ===================================================================
+                                           Additional Premium Attributes
+                        ===================================================================
+                                           First Effect  + %d Emeralds
+                                           Second Effect + %d Emeralds
+                                                1) Water Breathing
+                                                2) Fire Resistance
+                                                3) Night Vision
+                                                4) Invisibility
+                                                5) Slow Falling
+                                                0) Continue
+                        ===================================================================""",
+                size.getInitialPremium(), size.getAdditionalPremium());
     }
 
-    public static final String POTION_ENHANCEMENT(){
-        return """
-                ===================================================================
-                                        Potion Enhancements
-                ===================================================================
-                
-                                         1) Stronger effect
-                                         2) Longer effect
-                                         3) Both
-                                         0) Continue
-                
-                ===================================================================""";
+    public static final String POTION_ENHANCEMENT(Potion.PotionSize size) {
+        return String.format("""
+                        ===================================================================
+                                                Potion Enhancements
+                        ===================================================================
+                        
+                                        1) Stronger effect ( + %d Emeralds)
+                                        2) Longer effect   ( + %d Emeralds)
+                                        3) Both            ( + %d Emeralds)
+                                        0) Continue
+                        
+                        ===================================================================""",
+                size.getInitialPremium(), size.getInitialPremium(), size.getInitialPremium() + size.getAdditionalPremium());
     }
 
-    public static final String VISUAL_EFFECT_MENU(){
+    public static final String VISUAL_EFFECT_MENU() {
         return """
                 ===================================================================
                                           Visuals Effects
@@ -130,27 +135,27 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String POTION_HELPER_MENU(){
+    public static final String POTION_HELPER_MENU() {
         return """
                 ===================================================================
                                         Potion Helpers
                 ===================================================================
-
+                
                                         1) Rotten Flesh
                                         2) Nether Warts
                                         0) Continue
-
+                
                 ===================================================================""";
     }
 
-    public static final String CONFIRM_POTION_HEADER(){
+    public static final String CONFIRM_POTION_HEADER() {
         return """
                 ===================================================================
                                          Confirm Potion
                 ===================================================================""";
     }
 
-    public static final String CONFIRM_POTION(){
+    public static final String CONFIRM_POTION() {
         return """
                 ===================================================================
                 
@@ -174,7 +179,7 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String BASE_POTION_SIZE_MENU(){
+    public static final String BASE_POTION_SIZE_MENU() {
         return """
                 ===================================================================
                                                Sizes
@@ -188,7 +193,7 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String TRADE_MENU(){
+    public static final String TRADE_MENU() {
         return """
                 ===================================================================
                                            Tradable Items
@@ -201,7 +206,7 @@ public class MenuStrings {
                 ===================================================================""";
     }
 
-    public static final String CONFIRM_CHECKOUT_MENU(){
+    public static final String CONFIRM_CHECKOUT_MENU() {
         return """
                 ===================================================================
                                            Confirm Order?

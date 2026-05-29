@@ -29,14 +29,15 @@ public class Potion extends ShopItem{
     public String getMainEffect() { return mainEffect; }
     public void setMainEffect(String mainEffect) { this.mainEffect = mainEffect; }
 
-    public String getSize() {
+    public PotionSize getSize() { return size; }
+    public void setSize(PotionSize size) { this.size = size; }
+
+    public String getDisplaySize() {
         if(size == PotionSize.LARGE)            { return "Large"; }
         else if (size == PotionSize.MEDIUM)     { return "Medium"; }
         else if (size == PotionSize.SMALL)      { return "Small"; }
         else                                      return "";
     }
-
-    public void setSize(PotionSize size) { this.size = size; }
 
     public enum PotionSize{
         SMALL(10, 3, 2),
@@ -63,6 +64,7 @@ public class Potion extends ShopItem{
                 .map(OptionalEffect::toString)
                 .collect(Collectors.joining("\n"));
     }
+
     // Helper methods to calculate total potion price
     // Get a count of the premium option, if 1 charge the initial premium,
     // if 2 charge the initial + additional premium, else (0) no charge added
@@ -108,6 +110,6 @@ public class Potion extends ShopItem{
         return String.format("""
                 %-27s %28d Emerald(s)
                 %s""",
-                getSize() + " " + mainEffect + " Potion", getPrice(), listOptionalEffects());
+                getDisplaySize() + " " + mainEffect + " Potion", getPrice(), listOptionalEffects());
     }
 }
