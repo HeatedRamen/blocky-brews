@@ -254,6 +254,7 @@ public class PotionBuilder {
                 break;
 
             case "0":
+                clearConsole();
                 VillagerExpression.angry();
                 System.out.println("                Hrghhh... (Potion discarded)");
                 break;
@@ -305,13 +306,16 @@ public class PotionBuilder {
 
     public void addAdditionCustomization(Potion potion){
 
-        clearConsole();
-        promptCustomization();
+        String userChoice = "";
 
-        String userChoice = InputValidation.getValidInput
-                            (InputValidation.options(4));
+        while (!userChoice.equals("0")){
 
-        while (!userChoice.equals(0)){
+            clearConsole();
+            promptCustomization();
+
+            userChoice = InputValidation.getValidInput
+                    (InputValidation.options(4));
+
 
             switch (userChoice) {
 
@@ -332,8 +336,6 @@ public class PotionBuilder {
                     break;
             }
 
-            userChoice = InputValidation.getValidInput
-                    (InputValidation.options(4));
         }
     }
 

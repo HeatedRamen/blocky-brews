@@ -93,8 +93,9 @@ public class Potion extends ShopItem{
     private long getAdditionalEffectCost(){
         if (getAdditionalEffectCount() == 1){
             return size.getInitialPremium();
-        } else if (getAdditionalEffectCount() == 2) {
-            return size.getInitialPremium() + size.getAdditionalPremium();
+        } else if (getAdditionalEffectCount() >= 2) {
+            return size.getInitialPremium() +
+                    (size.getAdditionalPremium() * (getAdditionalEffectCount() - 1));
         } else return 0;
     }
 
@@ -107,8 +108,9 @@ public class Potion extends ShopItem{
     private long getEnhancementCost(){
         if (getEnhancementCount() == 1){
             return size.getInitialPremium();
-        } else if (getEnhancementCount() == 2) {
-            return size.getInitialPremium() + size.getAdditionalPremium();
+        } else if (getEnhancementCount() >= 2) {
+            return size.getInitialPremium() +
+                    (size.getAdditionalPremium() * (getAdditionalEffectCount() - 1));
         } else return 0;
     }
 
