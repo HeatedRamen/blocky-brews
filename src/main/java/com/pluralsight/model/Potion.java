@@ -2,6 +2,7 @@ package com.pluralsight.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Potion extends ShopItem{
     private List<OptionalEffect> optionalEffects;
@@ -54,6 +55,11 @@ public class Potion extends ShopItem{
         public long getAdditionalPremium () { return additionalPremium; }
     }
 
+    public String listOptionalEffects(){
+        return optionalEffects.stream()
+                .map(OptionalEffect::toString)
+                .collect(Collectors.joining("\n"));
+    }
     // Helper methods to calculate total potion price
     // Get a count of the premium option, if 1 charge the initial premium,
     // if 2 charge the initial + additional premium, else (0) no charge added
@@ -94,4 +100,8 @@ public class Potion extends ShopItem{
         return totalCost;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%10s Potion\n%s\n", mainEffect, listOptionalEffects());
+    }
 }

@@ -18,4 +18,9 @@ public class OptionalEffect {
 
     public boolean isPremium() { return premium; }
     public void setPremium(boolean premium) { this.premium = premium; }
+
+    @Override
+    public String toString() {
+        return type + ": " + name;
+    }
 }
