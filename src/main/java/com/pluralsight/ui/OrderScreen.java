@@ -172,7 +172,7 @@ public class OrderScreen {
     public void processAdditionalEffect(String userChoice, Potion potion){
 
         int count = 0;
-        while (!userChoice.equals("0") && count < 2){
+        while (!userChoice.equals("0") && count < 1){
 
             switch (userChoice){
 
@@ -380,18 +380,18 @@ public class OrderScreen {
     private static void clearConsole(){ System.out.print("\033[H\033[2J"); }
 
    // Menu output
-    public static void displayScreen() { System.out.println(MenuStrings.ORDER_MENU()); }
-    public static void promptMainPotionEffect() { System.out.println(MenuStrings.MAIN_EFFECT_MENU()); }
-    public static void promptPotionSize() { System.out.println(MenuStrings.POTION_SIZE()); }
-    public static void promptPotionForm() { System.out.println(MenuStrings.POTION_FORM_MENU());}
-    public static void promptAdditionalEffect(){ System.out.println(MenuStrings.ADDITIONAL_EFFECT_MENU()); }
-    public static void promptEnhancement(){ System.out.println(MenuStrings.POTION_ENHANCEMENT()); }
-    public static void promptVisualEffect(){ System.out.println(MenuStrings.VISUAL_EFFECT_MENU()); }
-    public static void promptPotionHelper(){ System.out.println(MenuStrings.POTION_HELPER_MENU()); }
-    public static void promptBasePotionName() { System.out.println(MenuStrings.BASE_POTION_MENU()); }
-    public static void promptBasePotionSize(){ System.out.println(MenuStrings.BASE_POTION_SIZE_MENU()); }
-    public static void promptTrade(){ System.out.println(MenuStrings.TRADE_MENU()); }
-    public static void confirmOrder(){ System.out.println(MenuStrings.CONFIRM_CHECKOUT_MENU()); }
+    public static void displayScreen()              { System.out.println(MenuStrings.ORDER_MENU()); }
+    public static void promptMainPotionEffect()     { System.out.println(MenuStrings.MAIN_EFFECT_MENU()); }
+    public static void promptPotionSize()           { System.out.println(MenuStrings.POTION_SIZE()); }
+    public static void promptPotionForm()           { System.out.println(MenuStrings.POTION_FORM_MENU());}
+    public static void promptAdditionalEffect()     { System.out.println(MenuStrings.ADDITIONAL_EFFECT_MENU()); }
+    public static void promptEnhancement()          { System.out.println(MenuStrings.POTION_ENHANCEMENT()); }
+    public static void promptVisualEffect()         { System.out.println(MenuStrings.VISUAL_EFFECT_MENU()); }
+    public static void promptPotionHelper()         { System.out.println(MenuStrings.POTION_HELPER_MENU()); }
+    public static void promptBasePotionName()       { System.out.println(MenuStrings.BASE_POTION_MENU()); }
+    public static void promptBasePotionSize()       { System.out.println(MenuStrings.BASE_POTION_SIZE_MENU()); }
+    public static void promptTrade()                { System.out.println(MenuStrings.TRADE_MENU()); }
+    public static void confirmOrder()               { System.out.println(MenuStrings.CONFIRM_CHECKOUT_MENU()); }
 
 }
 
