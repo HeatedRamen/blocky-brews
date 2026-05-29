@@ -24,6 +24,24 @@ public class Potion extends ShopItem{
     public void setOptionalEffects(List<OptionalEffect> optionalEffects) { this.optionalEffects = optionalEffects; }
     public void addOptionalEffect(OptionalEffect optionalEffect){ optionalEffects.add(optionalEffect); }
 
+    public String getOptionalEffectsList(){
+
+        String line = "";
+
+        // Loop through optional effect list and concat into list
+        for(int i = 0; i < optionalEffects.size(); i++){
+
+            line += String.format("%d) %s\n",
+                    i + 1,
+                    optionalEffects.get(i));
+        }
+
+        return line;
+    }
+    public int getOptionalEffectsSize() { return optionalEffects.size(); }
+    public void removeOptionalEffect(int index){ optionalEffects.remove(index); }
+    public void removeOptionalEffect(OptionalEffect optionalEffect) { optionalEffects.remove(optionalEffect); }
+
     public String getMainEffect() { return mainEffect; }
     public void setMainEffect(String mainEffect) { this.mainEffect = mainEffect; }
 

@@ -3,6 +3,8 @@ package com.pluralsight.ui;
 import com.pluralsight.model.*;
 import com.pluralsight.util.InputValidation;
 
+import java.awt.*;
+
 public class PotionBuilder {
 
     public void buildPotion(Order userOrder){
@@ -287,6 +289,17 @@ public class PotionBuilder {
 
         while (!potion.getOptionalEffects().isEmpty()){
 
+            clearConsole();
+            displayRemovalPrompt(potion);
+
+            String userChoice = InputValidation.getValidInput
+                    (InputValidation.options(potion.getOptionalEffectsSize()));
+
+            if (userChoice.equals("0")) { return; }
+            else{
+                int index = Integer.parseInt(userChoice) - 1;
+                potion.removeOptionalEffect(index);
+            }
         }
     }
 
@@ -296,34 +309,31 @@ public class PotionBuilder {
         promptCustomization();
 
         String userChoice = InputValidation.getValidInput
-                            (InputValidation.options(5));
+                            (InputValidation.options(4));
 
         while (!userChoice.equals(0)){
 
             switch (userChoice) {
-                case "1":
-                    getPotionForm(potion);
-                    break;
 
-                case "2":
+                case "1":
                     getPotionEnhancement(potion);
                     break;
 
-                case "3":
+                case "2":
                     getPotionAdditionalEffect(potion);
                     break;
 
-                case "4":
+                case "3":
                     getPotionVisualEffect(potion);
                     break;
 
-                case "5":
+                case "4":
                     getPotionHelper(potion);
                     break;
             }
 
             userChoice = InputValidation.getValidInput
-                    (InputValidation.options(5));
+                    (InputValidation.options(4));
         }
     }
 
@@ -339,5 +349,6 @@ public class PotionBuilder {
     public static void promptVisualEffect()                               { System.out.println(MenuStrings.VISUAL_EFFECT_MENU()); }
     public static void promptPotionHelper()                               { System.out.println(MenuStrings.POTION_HELPER_MENU()); }
     public static void displaySignatureOption()                           { System.out.println(MenuStrings.SIGNATURE_POTION_MENU());}
+    public static void displayRemovalPrompt(Potion potion)                       { System.out.println(MenuStrings.REMOVE_EFFECT(potion));}
     public static void promptCustomization()                              { System.out.println(MenuStrings.ADD_EFFECT_TO_SIGNATURE());}
 }

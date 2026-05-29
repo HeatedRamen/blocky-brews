@@ -248,20 +248,31 @@ public class MenuStrings {
 
     }
 
-    public static final String ADD_EFFECT_TO_SIGNATURE(){
+    public static final String ADD_EFFECT_TO_SIGNATURE() {
         return """
                 ===================================================================
                                      Add More Custom Effects?
                 ===================================================================
                 
-                                     1) Add Form
-                                     2) Add Enhancement
-                                     3) Add Additional Effect
-                                     4) Add Visual Effect
-                                     5) Add Potion Helper
+                                     1) Add Enhancement
+                                     2) Add Additional Effect
+                                     3) Add Visual Effect
+                                     4) Add Potion Helper
                                      0) Continue
                 
                 ===================================================================""";
     }
 
+    public static final String REMOVE_EFFECT(Potion potion) {
+        return String.format("""
+                ===================================================================
+                                       Remove Any Effects?
+                ===================================================================
+                
+                %s
+                0) Continue
+                
+                ===================================================================""",
+                potion.getOptionalEffectsList());
+    }
 }
