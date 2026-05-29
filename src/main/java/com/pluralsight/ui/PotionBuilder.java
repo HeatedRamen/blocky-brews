@@ -1,8 +1,6 @@
 package com.pluralsight.ui;
 
-import com.pluralsight.model.OptionalEffect;
-import com.pluralsight.model.Order;
-import com.pluralsight.model.Potion;
+import com.pluralsight.model.*;
 import com.pluralsight.util.InputValidation;
 
 public class PotionBuilder {
@@ -250,12 +248,82 @@ public class PotionBuilder {
 
             case "1":
                 userOrder.addItem(potion);
+                clearConsole();
                 break;
 
             case "0":
                 VillagerExpression.angry();
                 System.out.println("                Hrghhh... (Potion discarded)");
                 break;
+        }
+    }
+
+    public void buildSignaturePotion(Order userOrder){
+
+        clearConsole();
+        displaySignatureOption();
+
+        Potion signaturePotion = processSignaturePotion(InputValidation.getValidInput
+                                (InputValidation.options(1,2)));
+
+        promptRemoval(signaturePotion);
+        addAdditionCustomization(signaturePotion);
+
+        confirmPotion(signaturePotion, userOrder);
+    }
+
+    public Potion processSignaturePotion(String userChoice){
+
+        switch (userChoice){
+            case "1":
+                return new BloxyCola();
+            case "2":
+                return new CrashOut();
+        }
+        return null;
+    }
+
+    public void promptRemoval(Potion potion){
+
+        while (!potion.getOptionalEffects().isEmpty()){
+
+        }
+    }
+
+    public void addAdditionCustomization(Potion potion){
+
+        clearConsole();
+        promptCustomization();
+
+        String userChoice = InputValidation.getValidInput
+                            (InputValidation.options(5));
+
+        while (!userChoice.equals(0)){
+
+            switch (userChoice) {
+                case "1":
+                    getPotionForm(potion);
+                    break;
+
+                case "2":
+                    getPotionEnhancement(potion);
+                    break;
+
+                case "3":
+                    getPotionAdditionalEffect(potion);
+                    break;
+
+                case "4":
+                    getPotionVisualEffect(potion);
+                    break;
+
+                case "5":
+                    getPotionHelper(potion);
+                    break;
+            }
+
+            userChoice = InputValidation.getValidInput
+                    (InputValidation.options(5));
         }
     }
 
@@ -270,4 +338,6 @@ public class PotionBuilder {
     public static void promptEnhancement(Potion.PotionSize size)          { System.out.println(MenuStrings.POTION_ENHANCEMENT(size)); }
     public static void promptVisualEffect()                               { System.out.println(MenuStrings.VISUAL_EFFECT_MENU()); }
     public static void promptPotionHelper()                               { System.out.println(MenuStrings.POTION_HELPER_MENU()); }
+    public static void displaySignatureOption()                           { System.out.println(MenuStrings.SIGNATURE_POTION_MENU());}
+    public static void promptCustomization()                              { System.out.println(MenuStrings.ADD_EFFECT_TO_SIGNATURE());}
 }

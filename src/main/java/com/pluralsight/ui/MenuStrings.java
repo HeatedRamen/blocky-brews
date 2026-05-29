@@ -1,5 +1,7 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.model.BloxyCola;
+import com.pluralsight.model.CrashOut;
 import com.pluralsight.model.Potion;
 
 public class MenuStrings {
@@ -214,6 +216,50 @@ public class MenuStrings {
                 
                                              1) Confirm
                                              0) Go back
+                
+                ===================================================================""";
+    }
+
+    public static final String POTION_TYPE_MENU() {
+        return """
+                ===================================================================
+                
+                                      1) Make Custom Potion
+                                      2) Choose Signature Potion
+                                      0) Cancel
+                
+                ===================================================================""";
+
+    }
+
+    public static final String SIGNATURE_POTION_MENU() {
+        BloxyCola bloxyCola = new BloxyCola();
+        CrashOut crashOut = new CrashOut();
+        return String.format("""
+                        ===================================================================
+                                             Select a Signature Potion
+                                                   1) Bloxy Cola
+                        %s
+                        
+                                                    2) Crash Out
+                        %s
+                        ===================================================================""",
+                bloxyCola, crashOut);
+
+    }
+
+    public static final String ADD_EFFECT_TO_SIGNATURE(){
+        return """
+                ===================================================================
+                                     Add More Custom Effects?
+                ===================================================================
+                
+                                     1) Add Form
+                                     2) Add Enhancement
+                                     3) Add Additional Effect
+                                     4) Add Visual Effect
+                                     5) Add Potion Helper
+                                     0) Continue
                 
                 ===================================================================""";
     }

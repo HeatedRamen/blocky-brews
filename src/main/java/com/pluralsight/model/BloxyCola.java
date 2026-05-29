@@ -4,19 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CrashOut extends Potion {
+public class BloxyCola extends Potion{
 
-    public CrashOut() {
-        super(PotionSize.LARGE, "Strength");
-
+    public BloxyCola(){
+        super(PotionSize.MEDIUM, "Swiftness");
         List<OptionalEffect> optionalEffects = new ArrayList<>(Arrays.asList(
                 new OptionalEffect("Consumable", "Form", false),
-                new OptionalEffect("Invisibility", "Additional Effect", true),
                 new OptionalEffect("Longer", "Enhancement", true),
-                new OptionalEffect("Stronger", "Enhancement", true),
-                new OptionalEffect("Glows", "Visual", false)
+                new OptionalEffect("Swirls", "Visual", false),
+                new OptionalEffect("Nether Warts", "Potion Helper", false)
         ));
-
         setOptionalEffects(optionalEffects);
     }
 }

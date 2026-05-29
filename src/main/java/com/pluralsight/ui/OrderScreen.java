@@ -26,8 +26,7 @@ public class OrderScreen {
         switch(userChoice){
 
             case "1":
-                PotionBuilder potionBuilder = new PotionBuilder();
-                potionBuilder.buildPotion(userOrder);
+                makePotion();
                 return true;
 
             case "2":
@@ -52,6 +51,31 @@ public class OrderScreen {
         }
     }
 
+    public void makePotion(){
+
+        PotionBuilder potionBuilder = new PotionBuilder();
+
+        clearConsole();
+        promptPotionType();
+
+        String userChoice = InputValidation.getValidInput
+                            (InputValidation.options(2));
+
+        switch(userChoice) {
+
+            case "0":
+                return;
+
+            case "1":
+                potionBuilder.buildPotion(userOrder);
+                break;
+
+            case "2":
+                potionBuilder.buildSignaturePotion(userOrder);
+                break;
+        }
+
+    }
     public void addBasePotion(){
 
         clearConsole();
@@ -155,6 +179,8 @@ public class OrderScreen {
             case "1":
                 ReceiptWriter.writeReceipt(userOrder);
                 userOrder.clearOrder();
+                clearConsole();
+                VillagerExpression.laugh();
                 return false;
 
             // Shows angry villager for wasting his time then return back to order menu
@@ -173,6 +199,7 @@ public class OrderScreen {
 
    // Menu output
     public static void displayScreen()              { System.out.println(MenuStrings.ORDER_MENU()); }
+    public static void promptPotionType()           { System.out.println(MenuStrings.POTION_TYPE_MENU());}
     public static void promptBasePotionName()       { System.out.println(MenuStrings.BASE_POTION_MENU()); }
     public static void promptBasePotionSize()       { System.out.println(MenuStrings.BASE_POTION_SIZE_MENU()); }
     public static void promptTrade()                { System.out.println(MenuStrings.TRADE_MENU()); }
