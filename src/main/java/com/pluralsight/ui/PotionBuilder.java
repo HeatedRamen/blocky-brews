@@ -125,38 +125,43 @@ public class PotionBuilder {
     public void processAdditionalEffect(String userChoice, Potion potion){
 
         int count = 0;
-        while (!userChoice.equals("0") && count < 1){
+
+        while (!userChoice.equals("0") && count < 2){
 
             switch (userChoice){
 
                 case "1":
-                    potion.addOptionalEffect( new OptionalEffect("Water Breathing", "Additional Effect", true));
-                    count++;
+                    potion.addOptionalEffect(
+                            new OptionalEffect("Water Breathing", "Additional Effect", true));
                     break;
 
                 case "2":
-                    potion.addOptionalEffect( new OptionalEffect("Fire Resistance", "Additional Effect", true));
-                    count++;
+                    potion.addOptionalEffect(
+                            new OptionalEffect("Fire Resistance", "Additional Effect", true));
                     break;
 
                 case "3":
-                    potion.addOptionalEffect( new OptionalEffect("Night Vision", "Additional Effect", true));
-                    count++;
+                    potion.addOptionalEffect(
+                            new OptionalEffect("Night Vision", "Additional Effect", true));
                     break;
 
                 case "4":
-                    potion.addOptionalEffect( new OptionalEffect("Invisibility", "Additional Effect", true));
-                    count++;
+                    potion.addOptionalEffect(
+                            new OptionalEffect("Invisibility", "Additional Effect", true));
                     break;
 
                 case "5":
-                    potion.addOptionalEffect( new OptionalEffect("Slow Falling", "Additional Effect", true));
-                    count++;
+                    potion.addOptionalEffect(
+                            new OptionalEffect("Slow Falling", "Additional Effect", true));
                     break;
             }
 
-            userChoice = InputValidation.getValidInput
-                    (InputValidation.options(5));
+            count++;
+
+            if (count < 2) {
+                userChoice = InputValidation.getValidInput(
+                        InputValidation.options(5));
+            }
         }
     }
     public void getPotionAdditionalEffect(Potion potion){
@@ -204,7 +209,7 @@ public class PotionBuilder {
                 (InputValidation.options(5)), potion);
     }
 
-    public void processPotionHelper(String userChoice, Potion potion){
+    public void addPotionHelper(String userChoice, Potion potion){
 
         while (!userChoice.equals("0")){
 
@@ -226,7 +231,7 @@ public class PotionBuilder {
     public void getPotionHelper(Potion potion){
         clearConsole();
         promptPotionHelper();
-        processPotionHelper(InputValidation.getValidInput
+        addPotionHelper(InputValidation.getValidInput
                 (InputValidation.options(2)), potion);
     }
 

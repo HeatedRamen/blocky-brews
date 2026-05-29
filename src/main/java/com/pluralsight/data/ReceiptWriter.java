@@ -19,7 +19,7 @@ public class ReceiptWriter {
 
         // Get current date time and set it as file name
         LocalDateTime orderTime = LocalDateTime.now();
-        String fileName = "pluralsight/capstone/blocky-brews/receipt/" + orderTime.format(receiptDateTimeFormat) + ".txt";
+        String fileName = "receipt/" + orderTime.format(receiptDateTimeFormat) + ".txt";
 
         try {
 
